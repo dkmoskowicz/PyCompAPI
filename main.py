@@ -1,14 +1,24 @@
 from flask import Flask
 from flask_restful import Resource, Api
+from api.os.platform import Platform
+# from api.os.platform import Platform as plat
 
+debug = True
 app = Flask(__name__)
 api = Api(app)
 
-class HelloWorld(Resource):
+class available_api(Resource):
     def get(self):
-        return {'hello': 'world'}
+        return {'available-api': ["/"+i for i in list(api.endpoints)]}
 
-api.add_resource(HelloWorld, '/')
+
+api.add_resource(Platform, '/platform')
+#should be last api set
+api.add_resource(available_api, '/')
+
+if debug == True:
+    print("end points:\n", api.endpoints, "\n")
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=debug)
+
