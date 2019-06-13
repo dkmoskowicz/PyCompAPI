@@ -9,7 +9,8 @@ api = Api(app)
 
 class available_api(Resource):
     def get(self):
-        return {'available-api': ["/"+i for i in list(api.endpoints)]}
+        key = 'available_api'
+        return {key: ["/"+i for i in list(api.endpoints) if i != key]}
 
 
 api.add_resource(Platform, '/platform')
