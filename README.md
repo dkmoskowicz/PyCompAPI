@@ -1,2 +1,2 @@
 # PyCompAPI
-An API server that will give information about the computer its hosted on.
+An API server that will allow the user to communicate with the computer its hosted on. The user will be able to CRUD files, programs, etc...
